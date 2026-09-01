@@ -11,12 +11,7 @@ export function ExpertCard({ expert }: { expert: Expert }) {
       className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg"
     >
       <div className="flex items-start gap-4">
-        <span
-          className="grid size-12 shrink-0 place-items-center rounded-xl font-display text-base font-bold text-primary-foreground"
-          style={{ backgroundColor: expert.accent }}
-        >
-          {expert.initials}
-        </span>
+        <ExpertLogo expert={expert} />
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <h3 className="truncate text-base font-semibold">{expert.name}</h3>
