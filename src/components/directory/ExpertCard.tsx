@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Expert } from "@/data/experts";
 import { Stars } from "./Stars";
+import { ExpertLogo } from "./ExpertLogo";
 
 export function ExpertCard({ expert }: { expert: Expert }) {
   return (
