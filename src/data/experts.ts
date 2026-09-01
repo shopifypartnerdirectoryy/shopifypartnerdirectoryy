@@ -1,12 +1,18 @@
+import brainboxLogo from "@/assets/brainboxworld-logo.png.asset.json";
+
 export type Expert = {
   slug: string;
   name: string;
   tagline: string;
   about: string;
+  /** Optional logo image URL. When absent the card/profile falls back to initials. */
+  logo?: string;
   location: string;
+  address?: string;
   region: string;
   languages: string[];
   services: string[];
+  expertise?: string[];
   industries: string[];
   rating: number;
   reviews: number;
@@ -14,16 +20,19 @@ export type Expert = {
   startingPrice: string;
   website: string;
   phone: string;
+  whatsapp?: string;
   email: string;
   initials: string;
   accent: string;
   featured?: boolean;
+  memberSince?: string;
 };
 
 export const SERVICES = [
   "Store setup",
   "Store migration",
   "Custom theme design",
+  "Theme customization",
   "Headless commerce",
   "Conversion rate optimization",
   "SEO",
@@ -31,6 +40,7 @@ export const SERVICES = [
   "Email & SMS marketing",
   "Custom apps",
   "Analytics & tracking",
+  "Troubleshooting",
 ];
 
 export const REGIONS = [
@@ -49,9 +59,62 @@ export const INDUSTRIES = [
   "Electronics",
   "Health & wellness",
   "B2B & wholesale",
+  "Jewelry & accessories",
 ];
 
 export const experts: Expert[] = [
+  {
+    slug: "brainboxworld",
+    name: "Brainboxworld",
+    tagline: "Storefront design, development and growth for ambitious online brands",
+    about:
+      "Brainboxworld is a full-stack commerce studio that designs, builds and optimises online stores. The team pairs product-minded designers with senior developers, so a project moves from wireframe to live storefront without hand-off friction. Typical engagements include new store builds, replatforming from legacy carts, bespoke theme work, custom app development and ongoing conversion programmes. Every build ships with performance budgets, analytics instrumentation and documentation the in-house team can actually use.",
+    logo: brainboxLogo.url,
+    location: "Torrance, United States",
+    address: "444 Alaska Avenue Suite #CPT875, Torrance, CA 90503, USA",
+    region: "North America",
+    languages: ["English"],
+    services: [
+      "Store setup",
+      "Store migration",
+      "Custom theme design",
+      "Theme customization",
+      "Custom apps",
+      "Conversion rate optimization",
+      "SEO",
+      "Troubleshooting",
+    ],
+    expertise: [
+      "Replatforming & data migration",
+      "Design systems & component libraries",
+      "Core Web Vitals and page-speed work",
+      "Checkout and cart optimisation",
+      "Subscription and B2B workflows",
+      "Third-party API & ERP integrations",
+      "Server-side analytics and tracking",
+      "Accessibility remediation",
+    ],
+    industries: [
+      "Fashion & apparel",
+      "Beauty",
+      "Health & wellness",
+      "Electronics",
+      "Jewelry & accessories",
+      "B2B & wholesale",
+    ],
+    rating: 5.0,
+    reviews: 512,
+    projects: 640,
+    startingPrice: "From $1,500",
+    website: "https://brainboxworld.com",
+    phone: "+1 (331) 278-2900",
+    whatsapp: "+1 (331) 278-2900",
+    email: "info@brainboxworld.com",
+    initials: "BB",
+    accent: "var(--brand)",
+    featured: true,
+    memberSince: "September 2015",
+  },
   {
     slug: "gillco-digital",
     name: "Gillco Digital",
@@ -59,6 +122,7 @@ export const experts: Expert[] = [
     about:
       "Gillco Digital builds and scales online stores end to end — from storefront design and migration to conversion optimization and paid acquisition. The team works with growth-stage brands that need a single partner across design, development and performance marketing.",
     location: "Toronto, Canada",
+    address: "Toronto, Ontario, Canada",
     region: "North America",
     languages: ["English", "French"],
     services: [
@@ -69,6 +133,12 @@ export const experts: Expert[] = [
       "Paid media",
       "SEO",
     ],
+    expertise: [
+      "Storefront redesigns",
+      "Migration from legacy platforms",
+      "Landing page experimentation",
+      "Paid search and social",
+    ],
     industries: ["Fashion & apparel", "Beauty", "Home & garden"],
     rating: 5.0,
     reviews: 118,
@@ -76,10 +146,12 @@ export const experts: Expert[] = [
     startingPrice: "From $1,500",
     website: "https://gillcodigital.com",
     phone: "+1 (581) 781-4936",
+    whatsapp: "+1 (581) 781-4936",
     email: "hello@gillcodigital.com",
     initials: "GD",
-    accent: "var(--brand)",
+    accent: "var(--brand-2)",
     featured: true,
+    memberSince: "March 2017",
   },
   {
     slug: "c2-digital",
@@ -96,6 +168,7 @@ export const experts: Expert[] = [
       "Email & SMS marketing",
       "Analytics & tracking",
     ],
+    expertise: ["A/B testing programmes", "Lifecycle automation", "Server-side tracking"],
     industries: ["Health & wellness", "Food & beverage", "Electronics"],
     rating: 4.9,
     reviews: 86,
@@ -103,10 +176,12 @@ export const experts: Expert[] = [
     startingPrice: "From $2,000",
     website: "https://c2digital.com",
     phone: "+1 (249) 486-7212",
+    whatsapp: "+1 (249) 486-7212",
     email: "hello@c2digital.com",
     initials: "C2",
-    accent: "var(--brand-2)",
+    accent: "var(--brand-3)",
     featured: true,
+    memberSince: "June 2018",
   },
   {
     slug: "northbeam-studio",
@@ -118,6 +193,7 @@ export const experts: Expert[] = [
     region: "Europe",
     languages: ["English", "German"],
     services: ["Custom theme design", "Store setup", "SEO"],
+    expertise: ["Editorial art direction", "Design systems"],
     industries: ["Fashion & apparel", "Home & garden"],
     rating: 4.8,
     reviews: 54,
@@ -139,6 +215,7 @@ export const experts: Expert[] = [
     region: "Africa",
     languages: ["English", "Yoruba"],
     services: ["Store setup", "Store migration", "Analytics & tracking"],
+    expertise: ["Local payment gateways", "Logistics integrations", "Merchant training"],
     industries: ["Fashion & apparel", "Food & beverage", "B2B & wholesale"],
     rating: 4.9,
     reviews: 61,
@@ -160,6 +237,7 @@ export const experts: Expert[] = [
     region: "North America",
     languages: ["English", "Spanish"],
     services: ["Headless commerce", "Custom apps", "Analytics & tracking"],
+    expertise: ["Composable architecture", "ERP/PIM integrations", "Edge caching"],
     industries: ["Electronics", "B2B & wholesale"],
     rating: 4.7,
     reviews: 44,
@@ -181,6 +259,7 @@ export const experts: Expert[] = [
     region: "Asia Pacific",
     languages: ["English"],
     services: ["Email & SMS marketing", "Conversion rate optimization"],
+    expertise: ["Retention flows", "Segmentation", "Creative testing"],
     industries: ["Beauty", "Health & wellness"],
     rating: 4.8,
     reviews: 39,
@@ -202,6 +281,7 @@ export const experts: Expert[] = [
     region: "Latin America",
     languages: ["Spanish", "Portuguese", "English"],
     services: ["Store migration", "Store setup", "SEO"],
+    expertise: ["Localization", "Multi-currency", "Cross-border logistics"],
     industries: ["Fashion & apparel", "Food & beverage"],
     rating: 4.6,
     reviews: 28,
@@ -223,6 +303,7 @@ export const experts: Expert[] = [
     region: "Europe",
     languages: ["English"],
     services: ["SEO", "Paid media", "Analytics & tracking"],
+    expertise: ["Technical SEO", "Feed management", "Server-side tracking"],
     industries: ["Electronics", "Home & garden", "B2B & wholesale"],
     rating: 4.7,
     reviews: 72,
@@ -238,4 +319,12 @@ export const experts: Expert[] = [
 
 export function getExpert(slug: string) {
   return experts.find((e) => e.slug === slug);
+}
+
+export function whatsappLink(number: string, message: string) {
+  return `https://wa.me/${number.replace(/[^\d]/g, "")}?text=${encodeURIComponent(message)}`;
+}
+
+export function telLink(number: string) {
+  return `tel:${number.replace(/[^+\d]/g, "")}`;
 }
