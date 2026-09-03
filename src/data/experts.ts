@@ -126,6 +126,7 @@ export const experts: Expert[] = [
     tagline: "Full-service commerce partner for growth-stage merchants",
     about:
       "Gillco Digital builds and scales online stores end to end — from storefront design and migration to conversion optimization and paid acquisition. The team works with growth-stage brands that need a single partner across design, development and performance marketing.",
+    logo: gillcoLogo.url,
     location: "Toronto, Canada",
     address: "Toronto, Ontario, Canada",
     region: "North America",
