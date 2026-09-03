@@ -1,4 +1,9 @@
 import brainboxLogo from "@/assets/brainboxworld-logo.png.asset.json";
+import gillcoLogo from "@/assets/gillco-logo.jpg.asset.json";
+import heroesLogo from "@/assets/heroes-agency-logo.png.asset.json";
+import deepeaceLogo from "@/assets/deepeace-logo.jpg.asset.json";
+import lowkeyLogo from "@/assets/lowkey-logo.png.asset.json";
+import blaqachrafLogo from "@/assets/blaqachraf-logo.png.asset.json";
 
 export type Expert = {
   slug: string;

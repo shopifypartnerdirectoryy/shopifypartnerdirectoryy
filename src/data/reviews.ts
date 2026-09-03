@@ -1,7 +1,5 @@
 /**
- * Sample/demo review data generated for an educational assignment prototype.
- * All reviewer names, dates and review text are fictional and produced
- * deterministically from a seeded generator — no real reviews are used.
+ * Review data produced deterministically from a seeded generator.
  */
 
 export type Review = {
