@@ -10,13 +10,13 @@ export const Route = createFileRoute("/")({
   component: DirectoryPage,
   head: () => ({
     meta: [
-      { title: "Partner Directory — Find a vetted commerce expert" },
+      { title: "Shopify Partner Directory — Assignment Demo" },
       {
         name: "description",
         content:
           "Browse vetted commerce agencies, designers and developers by service, region and industry. Compare ratings, pricing and contact partners directly.",
       },
-      { property: "og:title", content: "Partner Directory — Find a vetted commerce expert" },
+      { property: "og:title", content: "Shopify Partner Directory — Assignment Demo" },
       {
         property: "og:description",
         content:

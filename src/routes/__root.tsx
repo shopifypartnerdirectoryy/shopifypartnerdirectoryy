@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Partner Directory — Hire vetted commerce experts" },
+      { title: "Shopify Partner Directory — Assignment Demo" },
       {
         name: "description",
         content:
-          "An independent directory of vetted commerce agencies, designers and developers.",
+          "An independent educational prototype of a commerce partner directory, built as a student assignment.",
       },
-      { property: "og:title", content: "Partner Directory — Hire vetted commerce experts" },
+      { property: "og:title", content: "Shopify Partner Directory — Assignment Demo" },
       {
         property: "og:description",
         content:
-          "An independent directory of vetted commerce agencies, designers and developers.",
+          "An independent educational prototype of a commerce partner directory, built as a student assignment.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter+Tight:wght@400;500;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
 
