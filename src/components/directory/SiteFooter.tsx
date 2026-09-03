@@ -4,9 +4,9 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="font-display text-lg font-semibold">Shopify Partner Directory</div>
-          <div className="text-xs text-muted-foreground">Assignment Demo</div>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-            An independent educational prototype built for a school assignment. Not affiliated with, endorsed by, or operated by Shopify or any real business. All profiles and reviews are fictional demo content.
+            Find and hire vetted commerce agencies, designers and developers — filter by service,
+            region and industry, then contact partners directly.
           </p>
         </div>
         <div>
@@ -34,7 +34,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="container-page py-5 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Shopify Partner Directory — Assignment Demo. Fictional educational project.
+          © {new Date().getFullYear()} Shopify Partner Directory. All rights reserved.
         </div>
       </div>
     </footer>

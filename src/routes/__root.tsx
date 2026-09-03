@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Shopify Partner Directory — Assignment Demo" },
+      { title: "Shopify Partner Directory" },
       {
         name: "description",
         content:
-          "An independent educational prototype of a commerce partner directory, built as a student assignment.",
+          "Find and hire vetted commerce agencies, designers and developers by service, region and industry.",
       },
-      { property: "og:title", content: "Shopify Partner Directory — Assignment Demo" },
+      { property: "og:title", content: "Shopify Partner Directory" },
       {
         property: "og:description",
         content:
-          "An independent educational prototype of a commerce partner directory, built as a student assignment.",
+          "Find and hire vetted commerce agencies, designers and developers by service, region and industry.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

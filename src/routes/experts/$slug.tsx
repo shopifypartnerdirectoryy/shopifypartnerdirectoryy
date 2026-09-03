@@ -33,7 +33,7 @@ export const Route = createFileRoute("/experts/$slug")({
     const desc = loaderData?.tagline ?? "Commerce partner profile";
     return {
       meta: [
-        { title: `${name} — Shopify Partner Directory (Assignment Demo)` },
+        { title: `${name} — Shopify Partner Directory` },
         { name: "description", content: desc },
         { property: "og:title", content: `${name} — Partner profile` },
         { property: "og:description", content: desc },

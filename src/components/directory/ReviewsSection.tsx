@@ -100,9 +100,6 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
         </label>
       </div>
 
-      <p className="mt-2 text-xs text-muted-foreground">
-        Sample reviews generated for this educational prototype.
-      </p>
 
       <div className="mt-5 grid gap-6 rounded-2xl border border-border bg-surface p-6 sm:grid-cols-[auto_1fr]">
         <div className="text-center sm:text-left">
