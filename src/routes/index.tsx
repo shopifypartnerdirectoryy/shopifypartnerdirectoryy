@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Search, MapPin, ShieldCheck, Handshake, Rocket } from "lucide-react";
+import { Search, MapPin, SlidersHorizontal } from "lucide-react";
 import { experts, SERVICES, REGIONS, INDUSTRIES } from "@/data/experts";
 import { ExpertCard } from "@/components/directory/ExpertCard";
 import { SiteHeader } from "@/components/directory/SiteHeader";
@@ -96,111 +96,50 @@ function DirectoryPage() {
       <SiteHeader />
 
       <section className="border-b border-border bg-surface">
-        <div className="container-page py-16 md:py-24">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
-            <ShieldCheck className="size-3.5 text-brand" /> Every partner is reviewed before listing
-          </span>
-          <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] md:text-6xl">
-            Hire a commerce expert who has done it before
-          </h1>
-          <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-            Search agencies and freelancers for store builds, migrations, design, marketing and
-            custom development — then reach out to them directly.
-          </p>
-
-          <div className="mt-8 flex max-w-2xl items-center gap-2 rounded-full border border-border bg-card p-2 shadow-sm">
-            <Search className="ml-3 size-4 shrink-0 text-muted-foreground" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by name, service or industry"
-              aria-label="Search experts"
-              className="w-full bg-transparent py-2 text-sm outline-none placeholder:text-muted-foreground"
-            />
-            <a
-              href="#experts"
-              className="shrink-0 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Search
-            </a>
-          </div>
-
-          <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-4">
-            {[
-              ["1,200+", "Vetted partners"],
-              ["48", "Countries covered"],
-              ["4.9", "Average rating"],
-            ].map(([v, l]) => (
-              <div key={l}>
-                <dt className="font-display text-2xl font-semibold">{v}</dt>
-                <dd className="text-sm text-muted-foreground">{l}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      <section id="services" className="container-page py-12">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          Filter by service
-        </h2>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {SERVICES.map((s) => (
-            <Chip key={s} active={service === s} onClick={() => setService(service === s ? null : s)}>
-              {s}
-            </Chip>
-          ))}
-        </div>
-
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="container-page grid items-center gap-10 py-12 md:grid-cols-[1fr_22rem] md:py-16">
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Region
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {REGIONS.map((r) => (
-                <Chip key={r} active={region === r} onClick={() => setRegion(region === r ? null : r)}>
-                  {r}
-                </Chip>
+            <h1 className="max-w-xl text-4xl font-medium leading-tight md:text-5xl">Find service partners</h1>
+            <p className="mt-3 max-w-lg text-base text-muted-foreground">
+              Browse by price, location, services, and more to find a partner that meets your needs.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {SERVICES.slice(0, 6).map((s) => (
+                <Chip key={s} active={service === s} onClick={() => setService(service === s ? null : s)}>{s}</Chip>
               ))}
             </div>
           </div>
-          <div id="industries" className="scroll-mt-24">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              Industry
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {INDUSTRIES.map((i) => (
-                <Chip
-                  key={i}
-                  active={industry === i}
-                  onClick={() => setIndustry(industry === i ? null : i)}
-                >
-                  {i}
-                </Chip>
-              ))}
-            </div>
+          <div className="hidden grid-cols-2 gap-3 md:grid" aria-hidden="true">
+            <div className="aspect-[3/4] rounded-md bg-primary/15 p-4"><div className="h-full rounded-sm border border-primary/20 bg-card" /></div>
+            <div className="mt-8 aspect-[3/4] rounded-md bg-accent p-4"><div className="h-full rounded-sm border border-primary/15 bg-surface" /></div>
           </div>
         </div>
       </section>
 
-      <section id="experts" className="container-page pb-16">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
+      <section id="experts" className="container-page grid gap-8 py-10 md:grid-cols-[15rem_1fr]">
+        <aside id="services" className="h-fit border-b border-border pb-8 md:sticky md:top-28 md:border-b-0 md:pb-0">
+          <div className="flex items-center gap-2 border-b border-border pb-3 text-xl font-medium"><SlidersHorizontal className="size-5" /> Filter</div>
+          <label className="mt-5 block text-sm font-semibold">Price range (USD)</label>
+          <div className="mt-2 grid grid-cols-2 gap-2"><input className="w-full rounded-sm border border-border bg-card px-3 py-2 text-sm" placeholder="Min" /><input className="w-full rounded-sm border border-border bg-card px-3 py-2 text-sm" placeholder="Max" /></div>
+          <FilterSelect label="Service" value={service ?? ""} onChange={(v) => setService(v || null)} options={SERVICES} placeholder="Select a service" />
+          <FilterSelect label="Location" value={region ?? ""} onChange={(v) => setRegion(v || null)} options={REGIONS} placeholder="Select a location" />
+          <div id="industries"><FilterSelect label="Industry" value={industry ?? ""} onChange={(v) => setIndustry(v || null)} options={INDUSTRIES} placeholder="Select an industry" /></div>
+          {(service || region || industry || query) && <button type="button" onClick={clear} className="mt-5 text-sm font-medium underline underline-offset-4">Clear all filters</button>}
+        </aside>
+
+        <div>
+          <div className="mb-5 flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 md:hidden">
+            <Search className="size-4 text-muted-foreground" /><input value={query} onChange={(e) => setQuery(e.target.value)} className="w-full bg-transparent text-sm outline-none" placeholder="Search partners" />
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{results.length}</span> partners match your
-            filters
-            {(service || region || industry || query) && (
-              <button onClick={clear} className="ml-3 underline underline-offset-4 hover:text-foreground">
-                Clear all
-              </button>
-            )}
+            Showing <span className="font-medium text-foreground">1–{results.length}</span> of {experts.length} partners
           </p>
           <label className="flex items-center gap-2 text-sm text-muted-foreground">
             Sort by
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm text-foreground outline-none"
+              className="rounded-sm border border-border bg-card px-3 py-2 text-sm text-foreground outline-none"
             >
               <option value="featured">Featured</option>
               <option value="rating">Highest rated</option>
@@ -210,54 +149,29 @@ function DirectoryPage() {
           </label>
         </div>
 
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          </div>
+        <div className="mt-5 space-y-3">
           {results.map((e) => (
             <ExpertCard key={e.slug} expert={e} />
           ))}
         </div>
 
         {results.length === 0 && (
-          <div className="mt-10 rounded-2xl border border-dashed border-border p-12 text-center">
+          <div className="mt-10 rounded-md border border-dashed border-border p-12 text-center">
             <MapPin className="mx-auto size-6 text-muted-foreground" />
             <p className="mt-3 text-sm text-muted-foreground">
               No partners match those filters yet. Try widening your search.
             </p>
           </div>
         )}
-      </section>
-
-      <section id="how" className="border-t border-border bg-surface">
-        <div className="container-page py-16">
-          <h2 className="text-3xl font-semibold md:text-4xl">How hiring works</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                icon: Search,
-                title: "Shortlist",
-                body: "Filter by service, region and industry, then compare ratings and pricing.",
-              },
-              {
-                icon: Handshake,
-                title: "Reach out",
-                body: "Contact partners directly by phone, email or their website — no middleman.",
-              },
-              {
-                icon: Rocket,
-                title: "Get to work",
-                body: "Agree scope and timeline with the partner and start your project.",
-              },
-            ].map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-2xl border border-border bg-card p-6">
-                <Icon className="size-5 text-brand" />
-                <h3 className="mt-4 text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{body}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <SiteFooter />
     </div>
   );
+}
+
+function FilterSelect({ label, value, onChange, options, placeholder }: { label: string; value: string; onChange: (value: string) => void; options: readonly string[]; placeholder: string }) {
+  return <label className="mt-5 block text-sm font-semibold">{label}<select value={value} onChange={(e) => onChange(e.target.value)} className="mt-2 w-full rounded-sm border border-border bg-card px-3 py-2 text-sm font-normal text-foreground"><option value="">{placeholder}</option>{options.map((option) => <option key={option} value={option}>{option}</option>)}</select></label>;
 }
