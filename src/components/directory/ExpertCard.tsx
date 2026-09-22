@@ -8,44 +8,35 @@ export function ExpertCard({ expert }: { expert: Expert }) {
     <Link
       to="/experts/$slug"
       params={{ slug: expert.slug }}
-      className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg"
+      className="group block border-b border-border bg-card px-5 py-6 transition-colors hover:bg-surface md:rounded-md md:border"
     >
-      <div className="flex items-start gap-4">
-        <ExpertLogo expert={expert} />
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h3 className="truncate text-base font-semibold">{expert.name}</h3>
+      <div className="flex items-start gap-4 md:gap-6">
+        <ExpertLogo expert={expert} className="size-14 rounded-full text-base md:size-16" />
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-base font-semibold group-hover:underline">{expert.name}</h3>
             {expert.featured && (
-              <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] font-medium text-accent-foreground">
-                Featured
+              <span className="rounded-sm bg-accent px-2 py-0.5 text-[11px] font-medium text-accent-foreground">
+                Featured partner
               </span>
             )}
           </div>
-          <p className="mt-0.5 text-sm text-muted-foreground">{expert.location}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs text-muted-foreground">
+            <Stars rating={expert.rating} reviews={expert.reviews} />
+            <span aria-hidden="true">·</span>
+            <span>{expert.location}</span>
+          </div>
+
+          <p className="mt-4 text-xs text-muted-foreground">
+            Price range for services <span className="font-medium text-foreground">{expert.startingPrice}</span>
+          </p>
+
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <span className="font-medium text-foreground">Services: </span>
+            {expert.services.slice(0, 4).join(", ")}
+            {expert.services.length > 4 ? ` + ${expert.services.length - 4} more` : ""}
+          </p>
         </div>
-      </div>
-
-      <p className="mt-4 line-clamp-2 text-sm text-muted-foreground">{expert.tagline}</p>
-
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {expert.services.slice(0, 3).map((s) => (
-          <span
-            key={s}
-            className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-muted-foreground"
-          >
-            {s}
-          </span>
-        ))}
-        {expert.services.length > 3 && (
-          <span className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-muted-foreground">
-            +{expert.services.length - 3}
-          </span>
-        )}
-      </div>
-
-      <div className="mt-5 flex items-center justify-between border-t border-border pt-4 text-sm">
-        <Stars rating={expert.rating} reviews={expert.reviews} />
-        <span className="font-medium text-foreground">{expert.startingPrice}</span>
       </div>
     </Link>
   );
