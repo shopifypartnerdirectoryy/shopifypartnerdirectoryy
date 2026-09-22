@@ -69,7 +69,12 @@ function ExpertPage() {
             <div className="flex items-start gap-5">
               <ExpertLogo expert={expert} className="size-20 rounded-2xl text-xl" />
               <div>
-                <h1 className="text-3xl font-semibold md:text-4xl">{expert.name}</h1>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-3xl font-semibold md:text-4xl">{expert.name}</h1>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground">
+                    <CheckCircle2 className="size-3.5" /> Verified partner
+                  </span>
+                </div>
                 <p className="mt-2 max-w-xl text-muted-foreground">{expert.tagline}</p>
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
                   <Stars rating={expert.rating} reviews={expert.reviews} />
