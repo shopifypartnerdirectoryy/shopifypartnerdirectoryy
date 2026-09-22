@@ -26,7 +26,7 @@ export function SiteHeader() {
           <a href="/#experts" className="flex items-center gap-1 hover:text-foreground">Browse <ChevronDown className="size-3" /></a>
           <a href="/#services" className="flex items-center gap-1 hover:text-foreground">Services <ChevronDown className="size-3" /></a>
           <a href="/#industries" className="flex items-center gap-1 hover:text-foreground">Industries <ChevronDown className="size-3" /></a>
-        </div>
+        </nav>
       </header>
     </div>
   );

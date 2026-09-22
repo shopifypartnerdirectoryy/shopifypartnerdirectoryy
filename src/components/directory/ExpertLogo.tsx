@@ -9,6 +9,7 @@ export function ExpertLogo({
 }) {
   if (expert.logo) {
     return (
+      <>
       <img
         src={expert.logo}
         alt={`${expert.name} logo`}
