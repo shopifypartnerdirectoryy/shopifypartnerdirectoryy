@@ -20,7 +20,7 @@ export function ExpertLogo({
         }}
         className={`shrink-0 border border-border bg-card object-contain p-1 ${className}`}
       />
-      <span hidden className={`shrink-0 place-items-center bg-primary font-display font-bold text-primary-foreground ${className}`}>
+      <span hidden className={`grid shrink-0 place-items-center bg-primary font-display font-bold text-primary-foreground ${className}`}>
         {expert.initials}
       </span>
       </>

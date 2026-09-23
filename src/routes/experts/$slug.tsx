@@ -57,7 +57,7 @@ function ExpertPage() {
       <SiteHeader />
 
       <div className="border-b border-border bg-surface">
-        <div className="container-page py-10">
+        <div className="container-page py-5">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
@@ -65,77 +65,23 @@ function ExpertPage() {
             <ArrowLeft className="size-4" /> Back to directory
           </Link>
 
-          <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div className="flex items-start gap-5">
-              <ExpertLogo expert={expert} className="size-20 rounded-2xl text-xl" />
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-3xl font-semibold md:text-4xl">{expert.name}</h1>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground">
-                    <CheckCircle2 className="size-3.5" /> Verified partner
-                  </span>
-                </div>
-                <p className="mt-2 max-w-xl text-muted-foreground">{expert.tagline}</p>
-                <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-                  <Stars rating={expert.rating} reviews={expert.reviews} />
-                  <span className="inline-flex items-center gap-1.5">
-                    <MapPin className="size-4" /> {expert.location}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Languages className="size-4" /> {expert.languages.join(", ")}
-                  </span>
-                  {expert.memberSince && (
-                    <span className="inline-flex items-center gap-1.5">
-                      <CalendarDays className="size-4" /> Listed since {expert.memberSince}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-              >
-                <Mail className="size-4" /> Contact
-              </a>
-              {expert.whatsapp && (
-                <a
-                  href={whatsappLink(expert.whatsapp, `Hi ${expert.name}, I found you on the directory.`)}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/40"
-                >
-                  <MessageCircle className="size-4" /> WhatsApp
-                </a>
-              )}
-              <a
-                href={expert.website}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/40"
-              >
-                <Globe className="size-4" /> Visit website
-              </a>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div className="container-page grid gap-10 py-12 lg:grid-cols-[1fr_20rem]">
-        <div>
+      <div className="container-page grid items-start gap-10 py-10 lg:grid-cols-[18rem_1fr]">
+        <div className="order-2 min-w-0">
           <h2 className="text-xl font-semibold">About</h2>
+          <h3 className="mt-5 text-sm font-semibold">Business description</h3>
           <p className="mt-3 text-muted-foreground">{expert.about}</p>
 
-          <h2 className="mt-10 text-xl font-semibold">Services offered</h2>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <h2 className="mt-10 text-xl font-semibold">Specialized services</h2>
+          <ul className="mt-4 divide-y divide-border border-y border-border">
             {expert.services.map((s) => (
               <li
                 key={s}
-                className="flex items-center gap-2.5 rounded-xl border border-border bg-card px-4 py-3 text-sm"
+                className="flex items-center justify-between py-4 text-sm font-medium"
               >
-                <CheckCircle2 className="size-4 shrink-0 text-brand" /> {s}
+                {s} <span className="grid size-5 place-items-center rounded-full bg-primary text-xs text-primary-foreground">+</span>
               </li>
             ))}
           </ul>
@@ -168,7 +114,7 @@ function ExpertPage() {
             ))}
           </div>
 
-          <section id="contact" className="mt-12 scroll-mt-24 rounded-2xl border border-border bg-surface p-6">
+          <section id="contact" className="mt-12 scroll-mt-24 rounded-md border border-border bg-surface p-6">
             <h2 className="text-xl font-semibold">Contact {expert.name}</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Reach the team directly by email, phone or WhatsApp.
@@ -209,16 +155,20 @@ function ExpertPage() {
           </div>
         </div>
 
-        <aside className="h-fit rounded-2xl border border-border bg-card p-6 lg:sticky lg:top-24">
+        <aside className="order-1 h-fit rounded-md border border-border bg-card p-5 shadow-sm lg:sticky lg:top-28">
+          <div className="flex items-center justify-between gap-3">
+            <ExpertLogo expert={expert} className="size-16 rounded-sm text-lg" />
+            <span className="inline-flex items-center gap-1 rounded-sm bg-accent px-2 py-1 text-[11px] font-medium text-accent-foreground"><CheckCircle2 className="size-3" /> Verified</span>
+          </div>
+          <h1 className="mt-5 text-2xl font-medium">{expert.name}</h1>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{expert.tagline}</p>
+          <div className="mt-3"><Stars rating={expert.rating} reviews={expert.reviews} /></div>
+
+          <a href="#contact" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"><Mail className="size-4" /> Contact</a>
+
+          <div className="mt-6 text-sm font-semibold text-muted-foreground">Price range for selected services</div>
           <div className="text-sm text-muted-foreground">Starting price</div>
           <div className="mt-1 font-display text-2xl font-semibold">{expert.startingPrice}</div>
-
-          <a
-            href="#contact"
-            className="mt-4 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            <Mail className="size-4" /> Contact
-          </a>
 
           <dl className="mt-6 space-y-3 border-t border-border pt-5 text-sm">
             <div className="flex justify-between">
@@ -240,6 +190,9 @@ function ExpertPage() {
           </dl>
 
           <div className="mt-6 space-y-2 border-t border-border pt-5 text-sm">
+            <div className="flex items-start gap-2 text-muted-foreground"><MapPin className="mt-0.5 size-4 shrink-0" /> {expert.location}</div>
+            <div className="flex items-start gap-2 text-muted-foreground"><Languages className="mt-0.5 size-4 shrink-0" /> {expert.languages.join(", ")}</div>
+            {expert.memberSince && <div className="flex items-start gap-2 text-muted-foreground"><CalendarDays className="mt-0.5 size-4 shrink-0" /> Listed since {expert.memberSince}</div>}
             <a
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
               href={telLink(expert.phone)}
