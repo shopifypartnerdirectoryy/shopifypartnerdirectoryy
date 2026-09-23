@@ -46,10 +46,11 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
 export function SiteFooter() {
   return (
     <footer className="bg-footer text-footer-foreground">
-      <div className="container-page grid gap-10 py-16 md:grid-cols-5">
+      <div className="container-page grid gap-10 py-14 md:grid-cols-5">
         <div>
-          <Link to="/" className="font-display text-lg font-semibold">
-            Shopify Partner Directory
+          <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold">
+            <span className="grid size-9 place-items-center rounded-sm bg-footer-foreground text-xs font-bold text-footer">PD</span>
+            Partner Directory
           </Link>
           <p className="mt-3 max-w-xs text-sm text-footer-muted">
             Find and hire vetted commerce agencies, designers and developers — filter by service,

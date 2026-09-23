@@ -149,7 +149,6 @@ function DirectoryPage() {
           </label>
         </div>
 
-          </div>
         <div className="mt-5 space-y-3">
           {results.map((e) => (
             <ExpertCard key={e.slug} expert={e} />
