@@ -19,7 +19,7 @@ function ReviewCard({ review }: { review: Review }) {
   const text = open || !long ? review.body : `${review.body.slice(0, 190).trimEnd()}…`;
 
   return (
-    <article className="rounded-2xl border border-border bg-card p-5">
+    <article className="border-b border-border py-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="min-w-0">
           <h4 className="truncate text-sm font-semibold">{review.author}</h4>
@@ -101,7 +101,7 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
       </div>
 
 
-      <div className="mt-5 grid gap-6 rounded-2xl border border-border bg-surface p-6 sm:grid-cols-[auto_1fr]">
+      <div className="mt-5 grid gap-6 border-y border-border py-6 sm:grid-cols-[auto_1fr]">
         <div className="text-center sm:text-left">
           <div className="font-display text-4xl font-semibold">{average.toFixed(1)}</div>
           <div className="mt-1 flex justify-center sm:justify-start">
@@ -137,15 +137,15 @@ export function ReviewsSection({ reviews }: { reviews: Review[] }) {
         <button
           type="button"
           onClick={() => setFilter(null)}
-          className="mt-4 rounded-full border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground"
+            className="mt-4 rounded-sm border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground"
         >
           Clear {starFilter}-star filter ✕
         </button>
       )}
 
-      <div className="mt-5 space-y-4">
+      <div className="mt-2">
         {slice.length === 0 ? (
-          <div className="grid place-items-center rounded-2xl border border-dashed border-border bg-card px-6 py-14 text-center">
+          <div className="grid place-items-center rounded-md border border-dashed border-border bg-card px-6 py-14 text-center">
             <MessageSquare className="size-6 text-muted-foreground" />
             <p className="mt-3 text-sm font-medium">No reviews match this filter</p>
             <p className="mt-1 text-sm text-muted-foreground">
