@@ -1,0 +1,11 @@
+# Shopify Partner Directory
+
+> A directory of commerce service partners, searchable by service, location and industry.
+
+Browse partner summaries, service areas and direct contact details on their individual pages. Partner-provided information should be confirmed with each business before making a decision. This site is an independent directory and is not an official Shopify property.
+
+## Pages
+
+- [Partner directory](/): Browse and filter listed commerce partners.
+- [Brainboxworld](/experts/brainboxworld): View services, location and contact details.
+- [Gillco Digital](/experts/gillco-digital): View services, location and contact details.
