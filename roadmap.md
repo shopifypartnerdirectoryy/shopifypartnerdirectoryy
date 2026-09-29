@@ -1,0 +1,3 @@
+- [ ] Refine the directory visuals, working Browse/Services/Locations menus, and circular partner logos.
+- [ ] Improve discoverability with accurate page metadata, sitemap, structured data, and AI-readable page guide.
+- [ ] Verify menus, filtering, profiles, sitemap, and layout on desktop and mobile.

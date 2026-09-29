@@ -8,10 +8,10 @@ export function ExpertCard({ expert }: { expert: Expert }) {
     <Link
       to="/experts/$slug"
       params={{ slug: expert.slug }}
-      className="group block border-b border-border bg-card px-5 py-6 transition-colors hover:bg-surface md:rounded-md md:border"
+      className="group block rounded-md border border-border bg-card px-5 py-5 transition-colors hover:border-primary/30 hover:bg-surface/40 hover:shadow-sm md:px-6"
     >
       <div className="flex items-start gap-4 md:gap-6">
-        <ExpertLogo expert={expert} className="size-14 rounded-full text-base md:size-16" />
+        <ExpertLogo expert={expert} className="size-16 text-base md:size-18" />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base font-semibold group-hover:underline">{expert.name}</h3>
