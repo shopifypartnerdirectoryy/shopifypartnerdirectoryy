@@ -22,6 +22,7 @@ import { SiteHeader } from "@/components/directory/SiteHeader";
 import { SiteFooter } from "@/components/directory/SiteFooter";
 
 export const Route = createFileRoute("/experts/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const expert = getExpert(params.slug);
     if (!expert) throw notFound();
@@ -31,6 +32,7 @@ export const Route = createFileRoute("/experts/$slug")({
   head: ({ loaderData }) => {
     const name = loaderData?.name ?? "Partner";
     const desc = loaderData?.tagline ?? "Commerce partner profile";
+    const url = loaderData ? `https://shopifypartnerdirectoryy.lovable.app/experts/${loaderData.slug}` : "";
     return {
       meta: [
         { title: `${name} — Shopify Partner Directory` },
@@ -38,8 +40,17 @@ export const Route = createFileRoute("/experts/$slug")({
         { property: "og:title", content: `${name} — Partner profile` },
         { property: "og:description", content: desc },
         { property: "og:type", content: "profile" },
+        ...(url ? [{ property: "og:url", content: url }] : [{ name: "robots", content: "noindex" }]),
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: url ? [{ rel: "canonical", href: url }] : [],
+      scripts: loaderData ? [{ type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "ProfessionalService", name: loaderData.name,
+        description: loaderData.tagline, url: loaderData.website, telephone: loaderData.phone,
+        email: loaderData.email, areaServed: loaderData.location, serviceType: loaderData.services,
+        mainEntityOfPage: url,
+        ...(loaderData.address ? { address: { "@type": "PostalAddress", streetAddress: loaderData.address } } : {}),
+      }) }] : [],
     };
   },
 });
@@ -157,7 +168,7 @@ function ExpertPage() {
 
         <aside className="order-1 h-fit rounded-md border border-border bg-card p-5 shadow-sm lg:sticky lg:top-28">
           <div className="flex items-center justify-between gap-3">
-            <ExpertLogo expert={expert} className="size-16 rounded-sm text-lg" />
+            <ExpertLogo expert={expert} className="size-18 text-lg" />
             <span className="inline-flex items-center gap-1 rounded-sm bg-accent px-2 py-1 text-[11px] font-medium text-accent-foreground"><CheckCircle2 className="size-3" /> Verified</span>
           </div>
           <h1 className="mt-5 text-2xl font-medium">{expert.name}</h1>
